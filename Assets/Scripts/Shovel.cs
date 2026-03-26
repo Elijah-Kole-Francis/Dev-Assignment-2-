@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shovel : MonoBehaviour
@@ -24,8 +25,13 @@ public class Shovel : MonoBehaviour
     {
         if (other.GetComponent<IHittable>() != null)
         {
-            IHittable toggle = other.GetComponent<IHittable>();
-            toggle.Hit(gameObject);
+            IHittable hittableObject = other.GetComponent<IHittable>();
+            hittableObject.Hit(gameObject);
+        }  
+        if (other.gameObject.CompareTag("Key"))
+        {
+            
         }
     }
+
 }

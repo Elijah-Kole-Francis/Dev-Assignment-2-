@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
+    public Character character;
+
+
     public Sprite doorLocked;
     public Sprite doorOpen;
 
@@ -15,9 +18,17 @@ public class Door : MonoBehaviour
     bool lockedState = true;
     SpriteRenderer spriteRenderer;
 
+    public int key = 0;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        //remember to set things up in engine as well
+        character.OnKeyCollected.AddListener(keyCount);
     }
 
     void UpdateState()
@@ -38,4 +49,22 @@ public class Door : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
     }
+    
+
+    //
+    public void keyCount()
+    {
+        key++;
+        UIKeyCount();
+    }
+    
+    //
+    public void UIKeyCount()
+    {
+        if(key == 2)
+        {
+            SetLock(false);
+        }
+    }
+
 }

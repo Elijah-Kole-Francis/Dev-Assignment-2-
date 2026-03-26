@@ -5,7 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Barrier : MonoBehaviour
 {
-    public Vector3 upTarget = new Vector3(0, -1, 0);
+    public Vector3 upTarget = new Vector3(0, 1, 0);
     public Vector3 downTarget = new Vector3(0, -1, 0);
     public float speed = 1.0f;
 
@@ -56,6 +56,7 @@ public class Barrier : MonoBehaviour
     // this is called from the toggle Unity Event
     public void Move(bool down)
     {
+        Debug.Log("ping");
         if (down)
         {
             moveDownCommand = true;
